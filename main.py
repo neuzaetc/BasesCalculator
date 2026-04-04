@@ -2,6 +2,8 @@ import flet as ft
 from src.views.main_view import main_view 
 from src.views.conversor_view import conversor_view
 from src.views.info_view import info_view
+from src.views.calculator_view import calculator_view
+from src.views.tables_view import tables_view
 
 async def main(page: ft.Page):
     page.title = "Calculadora de Conversão de Bases Numéricas"
@@ -22,6 +24,10 @@ async def main(page: ft.Page):
             page.views.append(main_view(page))
         elif page.route == "/conversor":
             page.views.append(conversor_view(page))
+        elif page.route == "/calculator":
+            page.views.append(calculator_view(page))
+        elif page.route == "/table":
+                page.views.append(tables_view(page))
         elif page.route == "/info":
             page.views.append(info_view(page))
         page.update()
