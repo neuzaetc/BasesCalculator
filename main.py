@@ -1,5 +1,7 @@
 import flet as ft
 from src.views.main_view import main_view 
+from src.views.conversor_view import conversor_view
+from src.views.info_view import info_view
 
 async def main(page: ft.Page):
     page.title = "Calculadora de Conversão de Bases Numéricas"
@@ -13,10 +15,15 @@ async def main(page: ft.Page):
     }
     page.theme = ft.Theme(font_family="OpenSans")
 
+    # Route's definicao caminhos
     async def on_route_change(e):
         page.views.clear()
         if page.route == "/":
             page.views.append(main_view(page))
+        elif page.route == "/conversor":
+            page.views.append(conversor_view(page))
+        elif page.route == "/info":
+            page.views.append(info_view(page))
         page.update()
 
     async def view_pop(e):

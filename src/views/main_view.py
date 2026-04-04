@@ -1,40 +1,10 @@
 import flet as ft
 from src.themes import colors as theme
-
+from src.components.footer import footer
+from src.components.button_option import button_option
 
 def main_view(page: ft.Page):
-    
-    def menu_item(icon_path, label, on_click=None):
-        return ft.Container(
-            col={"xs": 6, "sm": 4, "md": 3},
-            padding = 10,
-            on_click = on_click,
-            content = ft.Container(
-                bgcolor="#2a3f7e",
-                border_radius=15,
-                height=150,
-                padding=20,
-                alignment=ft.Alignment(0, 0),
-                border=ft.border.all(2, "#ffffff"),
-                content=ft.Column(
-                    alignment=ft.MainAxisAlignment.CENTER,
-                    horizontal_alignment=ft.CrossAxisAlignment.CENTER,
-                    controls=[
-                        ft.Image(
-                            src=icon_path,  
-                            width=60,
-                            height=60,
-                        ),
-                        ft.Text(
-                            value=label,
-                            color="#ffffff",
-                            weight=ft.FontWeight.W_600,
-                        ),
-                    ]
-                )
-            )
-        )
-        
+
     # eventos dos botoes
     def go_tabela(e):
         page.go("/tabela")
@@ -48,23 +18,25 @@ def main_view(page: ft.Page):
     def go_info(e):
         page.go("/info")
 
-    def sair(e):
-        page.window_close()
+    async def sair(e):
+        await page.window.close()
 
+    # elementos dentro da grelha / botoes
     grid = ft.ResponsiveRow(
         vertical_alignment=ft.CrossAxisAlignment.CENTER,
         controls=[
-            menu_item("icons/tabela.png", "Tabela", on_click=go_tabela),
-            menu_item("icons/convert.png", "Conversor", on_click=go_conversor),
-            menu_item("icons/operacoes.png", "Calculadora", on_click=go_calculadora),
-            menu_item("icons/info.png", "Info", on_click=go_info),
-            menu_item("icons/desligar.png", "Sair", on_click=sair),
+            button_option("icons/tabela.png", "Tabela", on_click = go_tabela),
+            button_option("icons/convert.png", "Conversor", on_click = go_conversor),
+            button_option("icons/operacoes.png", "Calculadora", on_click = go_calculadora),
+            button_option("icons/info.png", "Info", on_click = go_info),
+            button_option("icons/desligar.png", "Sair", on_click = sair),
         ]
     )
 
+    # estrutura da pagina que  retornada
     return ft.View(
         route="/",
-        padding=ft.padding.only(left=0, right=0, top=20, bottom=0),
+        padding=ft.padding.only(left=0, right=0, top=10, bottom=0),
         bgcolor=theme.AppColors.BACKGROUND_DARK,
         controls=[
             ft.Column(
@@ -84,27 +56,8 @@ def main_view(page: ft.Page):
                         content=grid,
                     ),
                     ft.Container(expand=True),
-                    ft.Stack(
-                        height=110,
-                        controls=[
-                            ft.Image(
-                                src="img/illustration.png",
-                                expand=True,
-                            ),
-                            ft.Container(
-                                expand=True,
-                                alignment=ft.Alignment(1, 1),
-                                padding=ft.padding.only(right=20, bottom=10),
-                                content=ft.Text(
-                                    "Neuza Crisóstomo nº 53482",
-                                    size=12,
-                                    font_family="OpenSans",
-                                    weight=ft.FontWeight.NORMAL,
-                                    color=theme.AppColors.TEXT_COLOR_DARK,
-                                ),
-                            )
-                        ]
-                    )
+                    # footer - nome
+                    footer(page),
                 ]
             )
         ]
