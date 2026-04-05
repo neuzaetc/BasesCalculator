@@ -12,3 +12,13 @@ __pycache__/
 # Sistema
 .DS_Store
 Thumbs.db
+
+build/
+dist/
+*.spec
+__pycache__/
+*.pyc
+*.pyz
+*.pkg
+*.toc
+*.zip
