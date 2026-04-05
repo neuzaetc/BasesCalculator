@@ -12,7 +12,7 @@ def button_option(icon_path, label, on_click=None):
             ft.BoxShadow(
                 spread_radius=1,
                 blur_radius=20,
-                color=ft.Colors.with_opacity(0.4, "#ffffff"),
+                color=ft.Colors.with_opacity(0.4, theme.AppColors.INPUT_FIELD_BORDER_FOCUS),
                 offset=ft.Offset(0, 0),
             )
             if e.data

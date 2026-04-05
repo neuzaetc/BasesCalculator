@@ -116,16 +116,20 @@ def tables_view(page: ft.Page):
                                     total_text,
 
                                     # tabela com scroll
-                                    ft.Container(
-                                        content=ft.Column(
-                                            controls=[tabela_container],
-                                            scroll=ft.ScrollMode.AUTO,
-                                        ),
+                                   ft.Container(
+                                        width=600,
                                         height=200,
                                         bgcolor=ft.Colors.with_opacity(0.1, "#ffffff"),
                                         border_radius=10,
                                         padding=10,
-                                    )
+                                        content=ft.Column(
+                                            controls=[
+                                                total_text,
+                                                tabela_container,
+                                            ],
+                                            scroll=ft.ScrollMode.AUTO,
+                                        ),
+                                    ),
                                 ]
                             )
                         )

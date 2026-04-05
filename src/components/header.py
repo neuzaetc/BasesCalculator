@@ -15,7 +15,7 @@ def header(page: ft.Page):
             ft.BoxShadow(
                 spread_radius=1,
                 blur_radius=20,
-                color=ft.Colors.with_opacity(0.1, "#ffffff"),
+                color=ft.Colors.with_opacity(0.1, theme.AppColors.INPUT_FIELD_BORDER_FOCUS),
                 offset=ft.Offset(0, 0),
             )
             if e.data

@@ -10,9 +10,9 @@ async def main(page: ft.Page):
     page.title = "Calculadora de Conversão de Bases Numéricas"
     page.padding = 0
     page.window.width = 900
-    page.window.height = 660
-    page.window.min_width = 900
-    page.window.min_height= 660
+    page.window.height = 665
+    page.window.min_width = 650
+    page.window.min_height= 665
     page.fonts = {
          "OpenSans": "fonts/OpenSans-VariableFont_wdth,wght.ttf",
     }

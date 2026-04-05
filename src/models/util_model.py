@@ -1,5 +1,12 @@
 class UtilModel:
     
+    HINTS = {
+        "2":  "Ex: 1010",
+        "8":  "Ex: 17",
+        "10": "Ex: 255",
+        "16": "Ex: FF",
+    }
+    
     BASES_VALIDAS = {
         2:  "01",
         8:  "01234567",
