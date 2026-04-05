@@ -87,14 +87,14 @@ def conversor_view(page: ft.Page):
                                 controls=[
                                     ft.Text("Calculadora de Conversão de Bases Numéricas", size=24, weight=ft.FontWeight.BOLD, color=theme.AppColors.TEXT_COLOR_DARK),
                                     ft.Divider(),
-                                    ft.Text("Converte Binário, Octal, Decimal, Hexadecimal e outros sistemas numéricos.", size=15, color=theme.AppColors.TEXT_COLOR_DARK),
+                                    ft.Text("Converte valores Binários, Octais, Decimais e Hexadecimais.", size=15, color=theme.AppColors.TEXT_COLOR_DARK),
                                     ft.Divider(height=5, color="transparent"),
                                     campo_binario,
                                     campo_octal,
                                     campo_decimal,
                                     campo_hexadecimal,
                                     ft.Divider(height=5, color="transparent"),
-                                    ft.ElevatedButton("Limpar", on_click=limpar, width=120),
+                                    ft.ElevatedButton("Limpar", on_click=limpar, width=100),
                                 ]
                             )
                         )
