@@ -9,3 +9,6 @@ class AppColors :
     BTN_TEXT_DARK =  "#ffffff"
     
     BTN_BACKGROUND_HOVER = "#4e72a7" 
+     
+    INPUT_FIELD_BORDER = "#4a6fa5"
+    INPUT_FIELD_BORDER_FOCUS = "#ffffff"

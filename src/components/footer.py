@@ -10,10 +10,11 @@ def footer(page: ft.Page):
                 src="img/illustration.png",
                 expand=True,
             ),
-            # lado esquerdo - dois textos um em cima do outro
+            # lado esquerdo
             ft.Container(
                 expand=True,
-                alignment=ft.Alignment(-1, 1),  # colado ao fundo esquerdo
+                # colado ao fundo esquerdo
+                alignment=ft.Alignment(-1, 1),
                 padding=ft.padding.only(left=20, bottom=10),
                 content=ft.Column(
                     spacing=2,
@@ -36,7 +37,7 @@ def footer(page: ft.Page):
                     ]
                 )
             ),
-            # lado direito - texto colado como estava
+            # lado direito
             ft.Container(
                 expand=True,
                 alignment=ft.Alignment(1, 1),

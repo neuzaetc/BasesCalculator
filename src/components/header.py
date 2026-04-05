@@ -30,7 +30,7 @@ def header(page: ft.Page):
         text.update()
         e.control.update()
 
-    # estrutura header lgo uni / botao voltar
+    # estrutura header logo ubi / botao voltar
     return ft.Container(
         col={"xs": 12, "sm": 12, "md": 12},
         padding=ft.padding.only(left=20, right=20),
