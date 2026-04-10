@@ -2,6 +2,7 @@ import flet as ft
 from src.themes import colors as theme
 from src.components.footer import footer
 from src.components.button_option import button_option
+import os
 
 def main_view(page: ft.Page):
 
@@ -20,6 +21,7 @@ def main_view(page: ft.Page):
 
     async def sair(e):
         await page.window.close()
+        os._exit(0)
 
     # elementos dentro da grelha / botoes
     grid = ft.ResponsiveRow(

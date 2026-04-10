@@ -8,6 +8,7 @@ from src.components.dropdown_base_saida import dropdown_base_saida
 from src.components.resultado_calc import resultado_calc
 from src.models.calculadora_model import CalculadoraModel
 from src.models.util_model import UtilModel
+from src.themes.style_buttons import btn_style
 
 
 def calculator_view(page: ft.Page):
@@ -24,16 +25,24 @@ def calculator_view(page: ft.Page):
     # validacao dos inputs consoante a base selecionada
     def validar_num1(e):
         base = int(base_num1.value or "10")
-        e.control.value = UtilModel.validar_caracteres(e.control.value, base)
+        valor = e.control.value
+        if base == 10 and valor.startswith("-"):
+            e.control.value = "-" + UtilModel.validar_caracteres(valor[1:], base)
+        else:
+            e.control.value = UtilModel.validar_caracteres(valor, base)
         e.control.update()
 
     def validar_num2(e):
         base = int(base_num2.value or "10")
-        e.control.value = UtilModel.validar_caracteres(e.control.value, base)
+        valor = e.control.value
+        if base == 10 and valor.startswith("-"):
+            e.control.value = "-" + UtilModel.validar_caracteres(valor[1:], base)
+        else:
+            e.control.value = UtilModel.validar_caracteres(valor, base)
         e.control.update()
 
-    num1_input = input_field_calc("num1", "Valor 1", "Ex: 1010", on_change=validar_num1)
-    num2_input = input_field_calc("num2", "Valor 2", "Ex: 1010", on_change=validar_num2)
+    num1_input = input_field_calc("num1", "Valor 1", UtilModel.HINTS.get(base_num1.value, "Ex: 0"), on_change=validar_num1)
+    num2_input = input_field_calc("num2", "Valor 2", UtilModel.HINTS.get(base_num2.value, "Ex: 0"), on_change=validar_num2)
 
     # limpa o input quando a base muda e altera os hints
     def on_change_base_num1(e):
@@ -197,26 +206,26 @@ def calculator_view(page: ft.Page):
                                                     ft.ElevatedButton(
                                                         content=ft.Text("+", size=20, weight=ft.FontWeight.BOLD),
                                                         on_click=somar, width=42,
-                                                        style=ft.ButtonStyle(padding=ft.padding.all(0), alignment=ft.Alignment(0, 0)),
+                                                        style=ft.ButtonStyle(padding=ft.padding.all(0), alignment=ft.Alignment(0, 0), overlay_color=btn_style.overlay_color, color=btn_style.color,animation_duration=btn_style.animation_duration,),
                                                     ),
                                                     ft.ElevatedButton(
                                                         content=ft.Text("-", size=20, weight=ft.FontWeight.BOLD),
                                                         on_click=subtrair, width=42,
-                                                        style=ft.ButtonStyle(padding=ft.padding.all(0), alignment=ft.Alignment(0, 0)),
+                                                        style=ft.ButtonStyle(padding=ft.padding.all(0), alignment=ft.Alignment(0, 0), overlay_color=btn_style.overlay_color, color=btn_style.color,animation_duration=btn_style.animation_duration,),
                                                     ),
                                                     ft.ElevatedButton(
                                                         content=ft.Text("×", size=20, weight=ft.FontWeight.BOLD),
                                                         on_click=multiplicar, width=42,
-                                                        style=ft.ButtonStyle(padding=ft.padding.all(0), alignment=ft.Alignment(0, 0)),
+                                                        style=ft.ButtonStyle(padding=ft.padding.all(0), alignment=ft.Alignment(0, 0), overlay_color=btn_style.overlay_color, color=btn_style.color,animation_duration=btn_style.animation_duration,),
                                                     ),
                                                     ft.ElevatedButton(
                                                         content=ft.Text("÷", size=20, weight=ft.FontWeight.BOLD),
                                                         on_click=dividir, width=42,
-                                                        style=ft.ButtonStyle(padding=ft.padding.all(0), alignment=ft.Alignment(0, 0)),
+                                                        style=ft.ButtonStyle(padding=ft.padding.all(0), alignment=ft.Alignment(0, 0), overlay_color=btn_style.overlay_color, color=btn_style.color,animation_duration=btn_style.animation_duration,),
                                                     ),
                                                     ft.ElevatedButton(
                                                         content=ft.Text("Limpar", size=14, weight=ft.FontWeight.W_600),
-                                                        on_click=limpar, width=100,
+                                                        on_click=limpar, width=100, style=btn_style
                                                     ),
                                                 ]
                                             ),

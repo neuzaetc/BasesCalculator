@@ -45,18 +45,19 @@ class CalculadoraModel:
 
     @staticmethod
     def resultado_para_base(resultado_decimal: int, base_saida: str) -> dict:
-        """Converte o resultado decimal para a base de saída selecionada."""
         try:
-            bin_res = ConversorModel.de_decimal(resultado_decimal, 2)
-            oct_res = ConversorModel.de_decimal(resultado_decimal, 8)
-            dec_res = ConversorModel.de_decimal(resultado_decimal, 10)
-            hex_res = ConversorModel.de_decimal(resultado_decimal, 16)
+            negativo = resultado_decimal < 0
+
+            bin_res = "Não suportado" if negativo else ConversorModel.de_decimal(resultado_decimal, 2)
+            oct_res = "Não suportado" if negativo else ConversorModel.de_decimal(resultado_decimal, 8)
+            dec_res = str(resultado_decimal)
+            hex_res = "Não suportado" if negativo else ConversorModel.de_decimal(resultado_decimal, 16)
 
             return {
-                "2":  f"Binário: {bin_res}"      if base_saida in ("all", "2")  else "",
-                "8":  f"Octal: {oct_res}"         if base_saida in ("all", "8")  else "",
-                "10": f"Decimal: {dec_res}"       if base_saida in ("all", "10") else "",
-                "16": f"Hexadecimal: {hex_res}"   if base_saida in ("all", "16") else "",
+                "2":  f"Binário: {bin_res}"    if base_saida in ("all", "2")  else "",
+                "8":  f"Octal: {oct_res}"      if base_saida in ("all", "8")  else "",
+                "10": f"Decimal: {dec_res}"    if base_saida in ("all", "10") else "",
+                "16": f"Hexadecimal: {hex_res}" if base_saida in ("all", "16") else "",
                 "erro": None,
             }
         except Exception as ex:

@@ -19,21 +19,30 @@ class ConversorModel:
     # converte valor de qualquer base para decimal
     @staticmethod
     def para_decimal(valor: str, base: int) -> int:
+        negativo = valor.startswith("-")
+        valor = valor.lstrip("-")
+        
         decimal = 0
         for i, digito in enumerate(reversed(valor.upper())):
             decimal += ConversorModel.ALGARISMOS.index(digito) * (base ** i)
-        return decimal
+        
+        return -decimal if negativo else decimal
 
     # converte valor decimal para qualquer base
     @staticmethod
     def de_decimal(valor: int, base: int) -> str:
         if valor == 0:
             return "0"
+        
+        negativo = valor < 0
+        valor = abs(valor)
+        
         resultado = ""
         while valor > 0:
             resultado = ConversorModel.ALGARISMOS[valor % base] + resultado
             valor //= base
-        return resultado
+        
+        return f"-{resultado}" if negativo else resultado
 
     # converte valor de uma base para outra
     @staticmethod

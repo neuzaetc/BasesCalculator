@@ -5,6 +5,7 @@ from src.components.footer import footer
 from src.components.input_field import input_field
 from src.models.util_model import UtilModel
 from src.models.conversor_model import ConversorModel
+from src.themes.style_buttons import btn_style
 
 
 def conversor_view(page: ft.Page):  
@@ -26,10 +27,10 @@ def conversor_view(page: ft.Page):
 
     # validar os inputs consoante as bases
     def validar_binario(e):
-        # no caso do binario sao removidos os espacos para a validacao
-        valor_sem_espacos = e.control.value.replace(" ", "")
-        valor_sem_espacos = UtilModel.validar_caracteres(valor_sem_espacos, 2)
-        atualizar_campos(valor_sem_espacos, 2, campo_binario)
+        valor_sem_espacos = UtilModel.filtrar_input(e.control.value.replace(" ", ""), 2)
+        e.control.value = valor_sem_espacos  # atualiza o campo com valor filtrado
+        e.control.update()
+        atualizar_campos(valor_sem_espacos, 2, campo_binario)  # passa sem espaços para converter
 
      # valida os caracteres octais (0-7) e atualiza os restantes campos
     def validar_octal(e):
@@ -94,7 +95,7 @@ def conversor_view(page: ft.Page):
                                     campo_decimal,
                                     campo_hexadecimal,
                                     ft.Divider(height=5, color="transparent"),
-                                    ft.ElevatedButton("Limpar", on_click=limpar, width=100),
+                                    ft.ElevatedButton("Limpar", on_click=limpar, width=100, style=btn_style),
                                 ]
                             )
                         )

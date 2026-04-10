@@ -4,6 +4,7 @@ from src.components.header import header
 from src.components.footer import footer
 from src.components.input_bits import input_bits
 from src.models.tabela_model import TabelaModel
+from src.themes.style_buttons import btn_style
 
 
 def tables_view(page: ft.Page):  
@@ -105,8 +106,8 @@ def tables_view(page: ft.Page):
                                             ft.Row(
                                                 spacing=10,
                                                 controls=[
-                                                    ft.ElevatedButton("Gerar Tabela", on_click=gerar_tabela, width=140),
-                                                    ft.ElevatedButton("Limpar", on_click=limpar, width=100),
+                                                    ft.ElevatedButton("Gerar Tabela", on_click=gerar_tabela, width=140, style=btn_style),
+                                                    ft.ElevatedButton("Limpar", on_click=limpar, width=100, style=btn_style),
                                                 ]
                                             ),
                                         ]

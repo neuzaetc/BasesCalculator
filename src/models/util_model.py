@@ -33,6 +33,12 @@ class UtilModel:
     def validar_caracteres(valor: str, base: int) -> str:
         permitido = UtilModel.BASES_VALIDAS.get(base, "0123456789")
         return ''.join([c for c in valor.upper() if c in permitido])
+    
+    @staticmethod
+    def filtrar_input(valor: str, base: int) -> str:
+        """Remove caracteres inválidos conforme a base — usado para filtrar o input em tempo real."""
+        permitido = UtilModel.BASES_VALIDAS.get(base, "0123456789")
+        return ''.join([c for c in valor.upper() if c in permitido])
 
     # retorna o numero maximo de caracteres permitidos para a base
     @staticmethod

@@ -13,6 +13,7 @@ async def main(page: ft.Page):
     page.window.height = 665
     page.window.min_width = 650
     page.window.min_height= 665
+    page.theme_mode = ft.ThemeMode.LIGHT
     page.fonts = {
          "OpenSans": "fonts/OpenSans-VariableFont_wdth,wght.ttf",
     }
